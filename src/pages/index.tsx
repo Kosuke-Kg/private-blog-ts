@@ -10,7 +10,9 @@ interface Props {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const data = await client.get({ endpoint: 'blogs' })
+  const data = await client.get({
+    endpoint: 'blogs',
+  })
 
   return {
     props: {
