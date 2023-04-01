@@ -1,9 +1,10 @@
+import { type NextPage } from 'next'
 import { Html, Head, Main, NextScript } from 'next/document'
 import React from 'react'
 
-export default function Document() {
+const Document: NextPage = () => {
   return (
-    <Html lang='en'>
+    <Html lang='ja'>
       <Head />
       <body>
         <Main />
@@ -12,3 +13,5 @@ export default function Document() {
     </Html>
   )
 }
+
+export default Document
