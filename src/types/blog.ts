@@ -5,7 +5,7 @@ export interface Blog {
   publishedAt: string
   revisedAt: string
   title: string
-  content: string
+  content?: string
   eyecatch?: Eyecatch
   category?: Category
 }

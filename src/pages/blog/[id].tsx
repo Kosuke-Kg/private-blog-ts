@@ -44,11 +44,13 @@ const BlogId: NextPage<Props> = ({ blog }: Props) => {
       <h1>{blog.title}</h1>
       <p>{blog.publishedAt}</p>
       <p>{blog?.category != null && blog.category.name}</p>
-      <div
-        dangerouslySetInnerHTML={{
-          __html: `${blog.content}`,
-        }}
-      />
+      {blog?.content != null && (
+        <div
+          dangerouslySetInnerHTML={{
+            __html: `${blog.content}`,
+          }}
+        />
+      )}
     </main>
   )
 }
