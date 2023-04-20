@@ -2,25 +2,33 @@ import { type GetStaticProps, type NextPage } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
 import React from 'react'
+import { ENDPOINTS } from '@/common/settings'
+import Pagination from '@/components/Pagination'
 import { client } from '@/libs/client'
 import { type Blog } from '@/types/blog'
 
 interface Props {
   blog: Blog[]
+  totalCount: number
 }
 
 export const getStaticProps: GetStaticProps = async () => {
   const data = await client.get({
-    endpoint: 'blogs',
+    endpoint: ENDPOINTS.blogs,
+    queries: {
+      offset: 0,
+      limit: 10,
+    },
   })
 
   return {
     props: {
       blog: data.contents,
+      totalCount: data.totalCount,
     },
   }
 }
-const Home: NextPage<Props> = ({ blog }: Props) => {
+const Home: NextPage<Props> = ({ blog, totalCount }: Props) => {
   return (
     <>
       <Head>
@@ -35,6 +43,7 @@ const Home: NextPage<Props> = ({ blog }: Props) => {
             <Link href={`/blog/${b.id}`}>{b.title}</Link>
           </li>
         ))}
+        <Pagination totalCount={totalCount} />
       </main>
     </>
   )
