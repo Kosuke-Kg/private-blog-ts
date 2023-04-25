@@ -1,0 +1,33 @@
+.blogCard {
+  border-radius: 15px;
+  background-color: var(--mainGray);
+  overflow: hidden;
+}
+
+.dataWrapper {
+  padding: 15px 12px;
+}
+
+.imgBox {
+  position: relative;
+  aspect-ratio: 4/2.25;
+}
+
+.img {
+  object-fit: cover;
+}
+
+.postTitle {
+  margin: 0 0 10px;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.date {
+  display: block;
+  color: var(--secondaryBlack);
+  font-size: 12px;
+  font-weight: 700;
+  text-align: right;
+}

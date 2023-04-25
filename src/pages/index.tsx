@@ -1,9 +1,9 @@
 import { type GetStaticProps, type NextPage } from 'next'
 import Head from 'next/head'
-import Link from 'next/link'
 import React from 'react'
-import { ENDPOINTS } from '@/common/settings'
+import { ENDPOINTS, PER_PAGE } from '@/common/settings'
 import Pagination from '@/components/Pagination'
+import BlogCard from '@/components/blogCard/BlogCard'
 import { client } from '@/libs/client'
 import { type Blog } from '@/types/blog'
 
@@ -17,7 +17,7 @@ export const getStaticProps: GetStaticProps = async () => {
     endpoint: ENDPOINTS.blogs,
     queries: {
       offset: 0,
-      limit: 10,
+      limit: PER_PAGE,
     },
   })
 
@@ -38,11 +38,13 @@ const Home: NextPage<Props> = ({ blog, totalCount }: Props) => {
         <link rel='icon' href='/favicon.ico' />
       </Head>
       <main>
-        {blog?.map((b: Blog) => (
-          <li key={b.id}>
-            <Link href={`/blog/${b.id}`}>{b.title}</Link>
-          </li>
-        ))}
+        {blog.length > 0 && (
+          <ul>
+            {blog?.map((b: Blog) => (
+              <BlogCard key={b.id} blog={b} />
+            ))}
+          </ul>
+        )}
         <Pagination totalCount={totalCount} />
       </main>
     </>
