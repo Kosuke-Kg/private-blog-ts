@@ -2,6 +2,7 @@ import { type GetStaticProps, type NextPage } from 'next'
 import Head from 'next/head'
 import React from 'react'
 import { ENDPOINTS, PER_PAGE } from '@/common/settings'
+import Layouts from '@/components/Layouts/Layouts'
 import Pagination from '@/components/Pagination'
 import BlogList from '@/components/blogList/BlogList'
 import SmallTitle from '@/components/title/SmallTitle'
@@ -38,11 +39,13 @@ const Home: NextPage<Props> = ({ blog, totalCount }: Props) => {
         <meta name='viewport' content='width=device-width, initial-scale=1' />
         <link rel='icon' href='/favicon.ico' />
       </Head>
-      <main>
-        <SmallTitle heads='h2' title='New' />
-        {totalCount > 0 ? <BlogList blog={blog} /> : <h3>記事がありません</h3>}
-        <Pagination totalCount={totalCount} />
-      </main>
+      <Layouts>
+        <>
+          <SmallTitle heads='h2' title='New' />
+          {totalCount > 0 ? <BlogList blog={blog} /> : <h3>記事がありません</h3>}
+          <Pagination totalCount={totalCount} />
+        </>
+      </Layouts>
     </>
   )
 }
