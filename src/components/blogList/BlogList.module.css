@@ -1,0 +1,4 @@
+.blogList {
+  display: grid;
+  gap: 40px 0;
+}

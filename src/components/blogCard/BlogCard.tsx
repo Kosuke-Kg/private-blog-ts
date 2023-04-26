@@ -2,6 +2,7 @@ import { format } from 'date-fns'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
+import BlogTitle from '../title/BlogTitle'
 import styles from './BlogCard.module.css'
 import { PATHS } from '@/common/settings'
 import { type Blog } from '@/types/blog'
@@ -25,7 +26,7 @@ const BlogCard = ({ blog }: Props): JSX.Element => {
           </div>
         )}
         <div className={styles.dataWrapper}>
-          <h2 className={styles.postTitle}>{blog.title}</h2>
+          <BlogTitle heads='h3' title={blog.title} />
           <span className={styles.date}>{format(new Date(blog.createdAt), 'yyyy年MM月dd日')}</span>
         </div>
       </Link>

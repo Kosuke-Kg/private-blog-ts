@@ -3,7 +3,8 @@ import Head from 'next/head'
 import React from 'react'
 import { ENDPOINTS, PER_PAGE } from '@/common/settings'
 import Pagination from '@/components/Pagination'
-import BlogCard from '@/components/blogCard/BlogCard'
+import BlogList from '@/components/blogList/BlogList'
+import SmallTitle from '@/components/title/SmallTitle'
 import { client } from '@/libs/client'
 import { type Blog } from '@/types/blog'
 
@@ -38,13 +39,8 @@ const Home: NextPage<Props> = ({ blog, totalCount }: Props) => {
         <link rel='icon' href='/favicon.ico' />
       </Head>
       <main>
-        {blog.length > 0 && (
-          <ul>
-            {blog?.map((b: Blog) => (
-              <BlogCard key={b.id} blog={b} />
-            ))}
-          </ul>
-        )}
+        <SmallTitle heads='h2' title='New' />
+        {totalCount > 0 ? <BlogList blog={blog} /> : <h3>記事がありません</h3>}
         <Pagination totalCount={totalCount} />
       </main>
     </>
