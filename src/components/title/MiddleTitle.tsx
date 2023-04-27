@@ -1,14 +1,14 @@
 import React from 'react'
-import styles from './BlogTitle.module.css'
+import styles from './MiddleTitle.module.css'
 
 interface Props {
   title: string
   heads: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
   clamp: boolean
 }
-
-const BlogTitle = ({ title, heads, clamp = true }: Props): JSX.Element => {
+const MiddleTitle = ({ title, heads, clamp = true }: Props): JSX.Element => {
   const className = `${styles.blogTitle} ${clamp ? styles.clamp : ''}`
+
   switch (heads) {
     case 'h1':
       return <h1 className={className}>{title}</h1>
@@ -27,4 +27,4 @@ const BlogTitle = ({ title, heads, clamp = true }: Props): JSX.Element => {
   }
 }
 
-export default BlogTitle
+export default MiddleTitle

@@ -4,3 +4,10 @@
   font-weight: 700;
   line-height: 1.5;
 }
+
+.clamp {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}

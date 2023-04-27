@@ -10,3 +10,18 @@ export const PATHS = {
   root: '/',
   post: '/blog',
 }
+
+export const SOCIAL = [
+  {
+    name: 'twitter',
+    url: 'https://twitter.com',
+  },
+  {
+    name: 'github',
+    url: 'https://github.com/Kosuke-Kg',
+  },
+  {
+    name: 'youtube',
+    url: 'https://youtube.com',
+  },
+]

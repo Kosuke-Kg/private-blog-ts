@@ -1,5 +1,6 @@
 import React from 'react'
-import Header from '../Header/Header'
+import Footer from '../footer/Footer'
+import Header from '../header/Header'
 
 interface Props {
   children: JSX.Element
@@ -10,7 +11,7 @@ const Layouts = ({ children }: Props): JSX.Element => {
     <>
       <Header />
       <main>{children}</main>
-      <footer></footer>
+      <Footer />
     </>
   )
 }

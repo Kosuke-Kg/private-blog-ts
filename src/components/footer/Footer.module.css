@@ -1,0 +1,15 @@
+.footer {
+  padding: 65px 60px;
+  background-color: var(--secondaryGray);
+}
+
+.logo {
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.copyright {
+  font-size: 12px;
+  font-weight: 700;
+  text-align: right;
+}
