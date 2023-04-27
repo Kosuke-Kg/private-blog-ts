@@ -1,0 +1,17 @@
+.wrapperMain {
+  display: flex;
+  gap: 0 32px;
+  margin: 0 auto;
+  padding: var(--contentMargin);
+  max-width: var(--contentWidth);
+}
+
+.leftArticle,
+.rightArticle {
+  width: 25%;
+}
+
+.mainArticle {
+  max-width: 425px;
+  width: 50%;
+}
