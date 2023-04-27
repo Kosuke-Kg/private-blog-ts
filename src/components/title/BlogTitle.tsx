@@ -4,7 +4,7 @@ import styles from './BlogTitle.module.css'
 interface Props {
   title: string
   heads: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
-  clamp: boolean
+  clamp?: boolean
 }
 
 const BlogTitle = ({ title, heads, clamp = true }: Props): JSX.Element => {

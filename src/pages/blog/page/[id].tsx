@@ -2,13 +2,14 @@ import { type GetStaticProps, type GetStaticPaths, type NextPage } from 'next'
 import Link from 'next/link'
 import React from 'react'
 import { ENDPOINTS, PER_PAGE } from '@/common/settings'
-import Pagination from '@/components/Pagination'
+import Pagination from '@/components/Pagination/Pagination'
 import { client } from '@/libs/client'
 import { type Blog } from '@/types/blog'
 
 interface Props {
   blog: Blog[]
   totalCount: number
+  nowPage: number
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -37,11 +38,12 @@ export const getStaticProps: GetStaticProps = async (context) => {
     props: {
       blog: data.contents,
       totalCount: data.totalCount,
+      nowPage: id,
     },
   }
 }
 
-const BlogPageId: NextPage<Props> = ({ blog, totalCount }: Props) => {
+const BlogPageId: NextPage<Props> = ({ blog, totalCount, nowPage }: Props) => {
   return (
     <div>
       <ul>
@@ -51,7 +53,7 @@ const BlogPageId: NextPage<Props> = ({ blog, totalCount }: Props) => {
           </li>
         ))}
       </ul>
-      <Pagination totalCount={totalCount} />
+      <Pagination totalCount={totalCount} nowPage={nowPage} />
     </div>
   )
 }
