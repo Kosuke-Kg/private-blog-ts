@@ -6,9 +6,11 @@ import { BLOG_TITLE, PATHS } from '@/common/settings'
 const Header = (): JSX.Element => {
   return (
     <header>
-      <Link className={styles.logo} href={PATHS.root}>
-        {BLOG_TITLE}
-      </Link>
+      <div className={styles.header}>
+        <Link className={styles.logo} href={PATHS.root}>
+          {BLOG_TITLE}
+        </Link>
+      </div>
     </header>
   )
 }
