@@ -9,6 +9,7 @@ export const ENDPOINTS = {
 export const PATHS = {
   root: '/',
   post: '/blog',
+  page: '/blog/page',
 }
 
 export const SOCIAL = [

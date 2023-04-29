@@ -1,6 +1,6 @@
 import React from 'react'
+import Header from '../Header/Header'
 import Footer from '../footer/Footer'
-import Header from '../header/Header'
 import styles from './Layouts.module.css'
 
 interface Props {

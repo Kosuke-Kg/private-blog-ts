@@ -7,6 +7,7 @@ import Pagination from '@/components/Pagination/Pagination'
 import BlogList from '@/components/blogList/BlogList'
 import SmallTitle from '@/components/title/SmallTitle'
 import { client } from '@/libs/client'
+import styles from '@/styles/top.module.css'
 import { type Blog } from '@/types/blog'
 
 interface Props {
@@ -41,9 +42,13 @@ const Home: NextPage<Props> = ({ blog, totalCount }: Props) => {
       </Head>
       <Layouts>
         <>
-          <SmallTitle heads='h2' title='New' />
-          {totalCount > 0 ? <BlogList blog={blog} /> : <h3>記事がありません</h3>}
-          <Pagination totalCount={totalCount} />
+          <section className={styles.listSec}>
+            <SmallTitle heads='h2' title='New' />
+            <div>{totalCount > 0 ? <BlogList blog={blog} /> : <h3>記事がありません</h3>}</div>
+            <div className={styles.pagination}>
+              <Pagination totalCount={totalCount} />
+            </div>
+          </section>
         </>
       </Layouts>
     </>

@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import React from 'react'
 import styles from './Pagination.module.css'
-import { PER_PAGE } from '@/common/settings'
+import { PATHS, PER_PAGE } from '@/common/settings'
 
 interface Props {
   totalCount: number
@@ -18,7 +18,7 @@ const Pagination = ({ totalCount, nowPage = 1 }: Props): JSX.Element => {
         const pageStyle = `${styles.page} ${nowPage - 1 === index ? styles.active : ''}`
         return (
           <li className={pageStyle} key={index}>
-            <Link href={`/blog/page/${number}`}>{number}</Link>
+            <Link href={`${PATHS.page}/${number}`}>{number}</Link>
           </li>
         )
       })}

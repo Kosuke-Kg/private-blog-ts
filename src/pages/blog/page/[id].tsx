@@ -1,9 +1,12 @@
 import { type GetStaticProps, type GetStaticPaths, type NextPage } from 'next'
-import Link from 'next/link'
 import React from 'react'
 import { ENDPOINTS, PER_PAGE } from '@/common/settings'
+import Layouts from '@/components/Layouts/Layouts'
 import Pagination from '@/components/Pagination/Pagination'
+import BlogList from '@/components/blogList/BlogList'
+import SmallTitle from '@/components/title/SmallTitle'
 import { client } from '@/libs/client'
+import styles from '@/styles/page.module.css'
 import { type Blog } from '@/types/blog'
 
 interface Props {
@@ -45,16 +48,17 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
 const BlogPageId: NextPage<Props> = ({ blog, totalCount, nowPage }: Props) => {
   return (
-    <div>
-      <ul>
-        {blog.map((blog) => (
-          <li key={blog.id}>
-            <Link href={`/blog/${blog.id}`}>{blog.title}</Link>
-          </li>
-        ))}
-      </ul>
-      <Pagination totalCount={totalCount} nowPage={nowPage} />
-    </div>
+    <Layouts>
+      <>
+        <section className={styles.listSec}>
+          <SmallTitle heads='h2' title='New' />
+          <div>{totalCount > 0 ? <BlogList blog={blog} /> : <h3>記事がありません</h3>}</div>
+          <div className={styles.pagination}>
+            <Pagination totalCount={totalCount} nowPage={nowPage} />
+          </div>
+        </section>
+      </>
+    </Layouts>
   )
 }
 
