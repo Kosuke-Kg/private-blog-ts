@@ -2,6 +2,7 @@ import { type GetStaticPaths, type GetStaticProps, type NextPage } from 'next'
 import { type Params } from 'next/dist/shared/lib/router/utils/route-matcher'
 import React from 'react'
 import { ENDPOINTS } from '@/common/settings'
+import Layouts from '@/components/Layouts/Layouts'
 import { client } from '@/libs/client'
 import { type Blog } from '@/types/blog'
 
@@ -41,18 +42,20 @@ export const getStaticProps: GetStaticProps<Props, Params> = async (context) => 
 
 const BlogId: NextPage<Props> = ({ blog }: Props) => {
   return (
-    <main>
-      <h1>{blog.title}</h1>
-      <p>{blog.publishedAt}</p>
-      <p>{blog?.category != null && blog.category.name}</p>
-      {blog?.content != null && (
-        <div
-          dangerouslySetInnerHTML={{
-            __html: `${blog.content}`,
-          }}
-        />
-      )}
-    </main>
+    <Layouts>
+      <>
+        <h1>{blog.title}</h1>
+        <p>{blog.publishedAt}</p>
+        <p>{blog?.category != null && blog.category.name}</p>
+        {blog?.content != null && (
+          <div
+            dangerouslySetInnerHTML={{
+              __html: `${blog.content}`,
+            }}
+          />
+        )}
+      </>
+    </Layouts>
   )
 }
 

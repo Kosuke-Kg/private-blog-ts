@@ -1,10 +1,13 @@
 import { type GetStaticProps, type NextPage } from 'next'
 import Head from 'next/head'
-import Link from 'next/link'
 import React from 'react'
-import { ENDPOINTS } from '@/common/settings'
-import Pagination from '@/components/Pagination'
+import { ENDPOINTS, PER_PAGE } from '@/common/settings'
+import Layouts from '@/components/Layouts/Layouts'
+import Pagination from '@/components/Pagination/Pagination'
+import BlogList from '@/components/blogList/BlogList'
+import SmallTitle from '@/components/title/SmallTitle'
 import { client } from '@/libs/client'
+import styles from '@/styles/top.module.css'
 import { type Blog } from '@/types/blog'
 
 interface Props {
@@ -17,7 +20,7 @@ export const getStaticProps: GetStaticProps = async () => {
     endpoint: ENDPOINTS.blogs,
     queries: {
       offset: 0,
-      limit: 10,
+      limit: PER_PAGE,
     },
   })
 
@@ -37,14 +40,17 @@ const Home: NextPage<Props> = ({ blog, totalCount }: Props) => {
         <meta name='viewport' content='width=device-width, initial-scale=1' />
         <link rel='icon' href='/favicon.ico' />
       </Head>
-      <main>
-        {blog?.map((b: Blog) => (
-          <li key={b.id}>
-            <Link href={`/blog/${b.id}`}>{b.title}</Link>
-          </li>
-        ))}
-        <Pagination totalCount={totalCount} />
-      </main>
+      <Layouts>
+        <>
+          <section className={styles.listSec}>
+            <SmallTitle heads='h2' title='New' />
+            <div>{totalCount > 0 ? <BlogList blog={blog} /> : <h3>記事がありません</h3>}</div>
+            <div className={styles.pagination}>
+              <Pagination totalCount={totalCount} />
+            </div>
+          </section>
+        </>
+      </Layouts>
     </>
   )
 }

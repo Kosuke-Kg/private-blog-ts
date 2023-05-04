@@ -1,0 +1,24 @@
+.pagination {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  gap: 0 15px;
+}
+
+.page {
+  width: 20px;
+  height: 20px;
+  background-color: var(--mainGrayLight);
+}
+
+.page.active {
+  background-color: var(--mainGray);
+}
+
+.page > a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  font-weight: 700;
+}

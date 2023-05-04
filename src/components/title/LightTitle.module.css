@@ -1,0 +1,10 @@
+.lightTitle {
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.clamp {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

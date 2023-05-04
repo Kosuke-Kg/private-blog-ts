@@ -1,0 +1,10 @@
+.middleTitle {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.clamp {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
